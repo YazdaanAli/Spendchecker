@@ -26,10 +26,19 @@ public class CSV_uploadGUI extends JFrame {
                   File selectedFile = fileChooser.getSelectedFile();
                   String selectedFilePath = selectedFile.getAbsolutePath();
                   // Process the selected file
-                  System.out.println(selectedFilePath);
-                  System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-                  CSV_reader reader = new CSV_reader(selectedFilePath);
-                  reader.readCSV();
+                  if (selectedFilePath.contains(".csv") == true) {
+                	  CSV_reader reader = new CSV_reader(selectedFilePath);
+                      reader.readCSV();
+                  }else if (selectedFilePath.contains(".xlsx") == true || selectedFilePath.contains(".xls") == true){
+//                	  System.out.println("this is when given a .txt");
+                	  EXCEL_reader reader = new EXCEL_reader();
+                	  reader.readExcelFile(selectedFilePath);                	  
+                  }else {
+                	  System.out.println("still works");
+                  }
+//                  System.out.println(selectedFilePath);
+//                  System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+                  
                   
               }
           }
