@@ -1,5 +1,7 @@
 package com.yazdaan.spendchecker;
 
+//import java.awt.List;
+import java.util.List;
 import java.util.Iterator;
 import javax.swing.*; //how we will be creating a pop up
 
@@ -24,6 +26,12 @@ public class Spendchecker {
 	        }
 	    });
 		
+	    
+	       // Create an instance of CategoriseData
+        CategoriseData data = new CategoriseData();
+
+        // Call the readCompanyNameFile method
+        List<String> companyNames = data.ReadCompanyName();
 		
 	}
 
