@@ -16,26 +16,30 @@ public class CSV_reader {
 		this.filePath = filePath;
 	}
 	
-	public void readCSV() {
-		String line = "";
+	public List<List<String>> readCSV() {
+		List<List<String>> allData = new ArrayList<>();
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+			String line;
 			while ((line = br.readLine()) != null) {
               String[] values = line.split(",");
-              processLine(values);
-              DataInList(values);
+              allData.addAll(DataInList(values));
+//              processLine(values);
+//              DataInList(values);
 			}
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return allData;
 	}
 	
-	private void processLine(String[] values) {
-		for (String value : values) {
-			System.out.println(value + "");
-		}
-		System.out.println();
-	}
+//	private void processLine(String[] values) {
+//		for (String value : values) {
+//			System.out.println(value + "");
+//		}
+//		System.out.println();
+//	}
 	
 	public List<List<String>> DataInList(String[] values){
 	    List<List<String>> data = new ArrayList<>();
