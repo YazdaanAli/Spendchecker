@@ -8,6 +8,8 @@ import java.util.*;
 
 public class CSV_uploadGUI extends JFrame {
 	
+	private List<List<String>> Data;
+	
 	public CSV_uploadGUI() {
 		setTitle("Upload your Bank file");
 		setSize(400, 300); 
@@ -29,22 +31,29 @@ public class CSV_uploadGUI extends JFrame {
                   // Process the selected file
                   if (selectedFilePath.contains(".csv") == true) {
                 	  CSV_reader reader = new CSV_reader(selectedFilePath);
-                      reader.readCSV();
+                      Data = reader.readCSV();
+                      for (List<String> innerList: Data) {
+                    	  for(String value : innerList) {
+                    		  System.out.println("1" + value + " " );
+                    	  }
+                    	  //Add a iunt that goes up by 1. 
+                    	  System.out.println();
+                      }
                   }else if (selectedFilePath.contains(".xlsx") == true){
-//                	  System.out.println("this is when given a .txt");
                 	  EXCEL_reader reader = new EXCEL_reader();
-                	  List<List<String>> data = reader.readExcelFile(selectedFilePath);
-                	  
-                	    // Printing data to console
-                	   for (List<String> row : data) {
-                		   for (String cell : row) {
-                	            System.out.print(cell + "\t"); // Tab-separated cells
-                	        }
-                	        System.out.println(); // New line at the end of each row
-                	    }
+                	  Data = reader.readExcelFile(selectedFilePath);
+                	  //List<List<String>> data = reader.readExcelFile(selectedFilePath);
+//                	  
+//                	    // Printing data to console
+//                	   for (List<String> row : data) {
+//                		   for (String cell : row) {
+//                	            System.out.print(cell + "\t"); // Tab-separated cells
+//                	        }
+//                	        System.out.println(); // New line at the end of each row
+//                	    }
                 	  
                   }else {
-                	  System.out.println("still works");
+                	  System.out.println("This file time is not supported");
                   }
 //                  System.out.println(selectedFilePath);
 //                  System.out.println("Selected file: " + selectedFile.getAbsolutePath());
@@ -58,6 +67,9 @@ public class CSV_uploadGUI extends JFrame {
 			
 	}
 	
+	public List<List<String>> getData(){
+		return Data;
+	}
 	
 }
 

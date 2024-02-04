@@ -6,7 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.SwingUtilities;
+
 public class CategoriseData {
+	
+	private List<List<String>> NewData;
 	
 	public List<String> ReadCompanyName(){
 		List<String> lines = new ArrayList<>();
@@ -17,7 +21,7 @@ public class CategoriseData {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				lines.add(line);
-				System.out.println(line);
+				//System.out.println(line);
 			}
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -30,8 +34,13 @@ public class CategoriseData {
 	public void Compare() {
 		List<String> companyNames = ReadCompanyName();
 		
-		
-		
+	    SwingUtilities.invokeLater(new Runnable() {
+	        @Override
+	        public void run() {
+	            CSV_uploadGUI frame = new CSV_uploadGUI();
+	            NewData = frame.getData();
+	        }
+	    });
 		
 	}
 	

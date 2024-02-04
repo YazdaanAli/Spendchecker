@@ -19,19 +19,21 @@ public class Spendchecker {
 //		reader.readCSV();
 //	
 		
-	    SwingUtilities.invokeLater(new Runnable() {
-	        @Override
-	        public void run() {
-	            CSV_uploadGUI frame = new CSV_uploadGUI();
-	        }
-	    });
+//	    SwingUtilities.invokeLater(new Runnable() {
+//	        @Override
+//	        public void run() {
+//	            CSV_uploadGUI frame = new CSV_uploadGUI();
+//	        }
+//	    });
 		
 	    
 	       // Create an instance of CategoriseData
         CategoriseData data = new CategoriseData();
 
         // Call the readCompanyNameFile method
-        List<String> companyNames = data.ReadCompanyName();
+        //List<String> companyNames = data.ReadCompanyName();
+        
+        data.Compare();
 		
 	}
 
